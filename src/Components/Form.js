@@ -21,6 +21,7 @@ function Form() {
     newTodo.id = uuidv4();
     newArr.push(newTodo);
     setData(newArr);
+    setStateInput('')
   };
 
   return (
@@ -30,7 +31,7 @@ function Form() {
           Choses a faire
         </label>
         <input
-        value={setStateInput}
+        value={stateInput}
           onInput={(e) => linkInput(e.target.value)}
           type="text"
           className="form-control"
