@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 function Form() {
   const [data, setData] = useState([
-    { txt: "hey", id: uuidv4() },
-    { txt: "yo", id: uuidv4() },
+    // { txt: "hey", id: uuidv4() },
+    // { txt: "yo", id: uuidv4() },
   ]);
   const [stateInput, setStateInput] = useState();
 
@@ -21,7 +21,14 @@ function Form() {
     newTodo.id = uuidv4();
     newArr.push(newTodo);
     setData(newArr);
-    setStateInput('')
+    setStateInput("");
+  };
+
+  const deleteTodo = (id) => {
+    const filteredState = data.filter((item) => {
+      return item.id !== id;
+    });
+    setData(filteredState);
   };
 
   return (
@@ -31,7 +38,7 @@ function Form() {
           Choses a faire
         </label>
         <input
-        value={stateInput}
+          value={stateInput}
           onInput={(e) => linkInput(e.target.value)}
           type="text"
           className="form-control"
@@ -41,8 +48,8 @@ function Form() {
       </form>
       <h2>Liste des choses a faire :</h2>
       <ul className="list-group">
-        {data.map((item, index) => {
-          return <Item txt={item.txt} />;
+        {data.map((item) => {
+          return <Item txt={item.txt} delFunc={deleteTodo} id={item.id} />;
         })}
       </ul>
     </div>
