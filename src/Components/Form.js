@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Item from "./Item";
 
 function Form() {
   return (
@@ -11,7 +12,10 @@ function Form() {
         <button className="mt-2 btn btn-primary d-block">Envoyez</button>
       </form>
       <h2>Liste des choses a faire :</h2>
-      <ul className="list-group"></ul>
+      <ul className="list-group">
+        <Item />
+        <Item />
+      </ul>
     </div>
   );
 }
